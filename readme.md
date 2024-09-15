@@ -10,7 +10,7 @@ curl --request POST \
   --data '{
   "bruno": "is-awesome",
   "long-int": 990531470713421825
-}
+}'
 ```
 
 ## Development
