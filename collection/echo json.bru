@@ -1,0 +1,22 @@
+meta {
+  name: echo json
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8000
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "bruno": "is-awesome",
+    "long-int": 990531470713421825
+  }
+}
+
+script:pre-request {
+  req.disableParsingResponseJson()
+}
