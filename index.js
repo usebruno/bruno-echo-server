@@ -2,10 +2,10 @@ const http = require('http');
 
 const server = http.createServer((req, res) => {
   if (req.method === 'POST' && req.url === '/') {
-    let body = '';
+    let body = [];
 
     req.on('data', chunk => {
-      body += chunk.toString();
+      body.push(chunk) 
     });
 
     req.on('end', () => {
@@ -15,7 +15,7 @@ const server = http.createServer((req, res) => {
       }
 
       res.writeHead(200, responseHeaders);
-      res.end(body);
+      res.end(Buffer.concat(body));
     });
   } else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
